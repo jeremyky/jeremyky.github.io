@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+<nav>
+  <a href="/">Home</a>
+  <a href="/pages/projects.html">Projects</a>
+  <a href="/pages/about.html">About</a>
+  <a href="/blog/">Blog</a>
+</nav>
+
+<section id="projects" class="projects">
+  <h2>Projects</h2>
+
+  <div class="project-grid">
+    <button class="project-card"
+            data-title="FloodWatch"
+            data-desc="IoT + SAR flood early warning. LoRa sensors, AWS backend, EVT rainfall + SAR priors."
+            data-links='[["GitHub","https://github.com/yourname/floodwatch"],["Demo","https://..."]]'>
+      <h3>FloodWatch</h3>
+      <p>IoT + SAR flood early warning</p>
+      <span class="chip">ML</span>
+      <span class="chip">Full Stack</span>
+      <span class="chip">Research</span>
+      <span class="chip">IoT</span>
+    </button>
+    </div>
+    </section>
+
+<dialog id="projectDialog" class="modal">
+  <form method="dialog" class="modal-inner">
+    <button class="modal-close" aria-label="Close">✕</button>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <div id="modalLinks" class="modal-links"></div>
+  </form>
+</dialog>
+
+
+</body>
+</html>

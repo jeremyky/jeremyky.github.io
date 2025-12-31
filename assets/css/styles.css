@@ -232,3 +232,87 @@ html, body {
   height: 100%;
   background: var(--bg);
 }
+
+
+
+/* --------- PAGE --------- */
+.page {
+  padding-top: 4.5rem;
+  padding-bottom: 4rem;
+}
+
+.page__header {
+  margin-bottom: 2.5rem;
+}
+
+.page__title {
+  margin: 0 0 0.75rem 0;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  letter-spacing: -0.02em;
+}
+
+.page__subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+/* --------- PROJECTS GRID --------- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --------- CARD --------- */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.25rem 1.25rem;
+  background: transparent;
+}
+
+.card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.card__desc {
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+}
+
+.card__links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+/* --------- TAGS --------- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.tag {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text);
+}

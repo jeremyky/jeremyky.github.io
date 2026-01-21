@@ -165,8 +165,31 @@ html[data-theme="bw"] .toggle-thumb {
 .hero__links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 1.25rem 1.75rem;
   margin-top: 0.5rem;
+}
+
+/* Icon links */
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.icon-link:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.icon-link svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .hero__media {
@@ -191,8 +214,8 @@ html[data-theme="bw"] .toggle-thumb {
 .footer {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 2rem;
   border-top: 1px solid var(--border);
   padding-top: 1.5rem;
 }
@@ -315,4 +338,590 @@ html, body {
   padding: 0.25rem 0.6rem;
   font-size: 0.85rem;
   color: var(--text);
+}
+
+/* =========================
+   GALLERY PAGE
+========================= */
+
+/* Filters (simple, consistent with your design) */
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.pill {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.pill:hover { opacity: 1; }
+
+.pill.is-active {
+  opacity: 1;
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 1000px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+  .gallery { grid-template-columns: 1fr; }
+}
+
+/* Card */
+.gallery-card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Clickable image area */
+.gallery-card__btn {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Make all thumbnails consistent:
+   - fixed aspect ratio
+   - object-fit cover so they crop nicely
+*/
+.gallery-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* change to 1/1 if you prefer squares */
+  object-fit: cover;
+  display: block;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.gallery-card__btn:hover img {
+  transform: scale(1.02);
+  opacity: 0.96;
+}
+
+/* Caption */
+.gallery-card__cap {
+  padding: 0.9rem 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.gallery-card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.gallery-card__meta {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* =========================
+   LIGHTBOX (optional)
+========================= */
+.lightbox[hidden] { display: none; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+}
+
+html[data-theme="bw"] .lightbox__backdrop {
+  background: rgba(255,255,255,0.12);
+}
+
+.lightbox__panel {
+  position: relative;
+  width: min(1100px, 92vw);
+  margin: 6vh auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.lightbox__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--bg);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.7rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close:hover { opacity: 0.85; }
+
+
+/* =========================
+   GALLERY (FLIP CARDS)
+========================= */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 1000px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 650px) {
+  .gallery { grid-template-columns: 1fr; }
+}
+
+/* Outer card */
+.flip {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Clickable inner wrapper */
+.flip__inner {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+
+  /* flip setup */
+  position: relative;
+  perspective: 1000px;
+  line-height: 0;
+}
+
+/* preserve sizing + ensure all images fit uniformly */
+.flip__face {
+  width: 100%;
+  aspect-ratio: 4 / 3;    /* change to 1/1 if you want square */
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 220ms ease;
+}
+
+/* FRONT */
+.flip__front {
+  transform: rotateY(0deg);
+}
+
+.flip__front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+/* subtle hover */
+.flip__inner:hover .flip__front img {
+  transform: scale(1.02);
+  opacity: 0.96;
+}
+
+/* BACK */
+.flip__back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  background: var(--bg);
+  color: var(--text);
+
+  /* center content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* caption block on back */
+.flip__cap {
+  width: 100%;
+  max-width: 48ch;
+  line-height: 1.45;
+}
+
+.flip__title {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.flip__meta {
+  margin: 0 0 0.75rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.flip__desc {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* flipped state */
+.flip.is-flipped .flip__front { transform: rotateY(180deg); }
+.flip.is-flipped .flip__back  { transform: rotateY(360deg); }
+
+/* keyboard focus */
+.flip__inner:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--text);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .flip__face { transition: none; }
+  .flip__front img { transition: none; }
+}
+
+
+/* =========================
+   FLIP GALLERY CARDS
+========================= */
+
+/* Grid (if not already defined elsewhere) */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 1000px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+  .gallery { grid-template-columns: 1fr; }
+}
+
+/* Outer card */
+.flip {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Clickable inner wrapper */
+.flip__inner {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  position: relative;
+  perspective: 1000px;
+  display: block;
+  line-height: 0;
+}
+
+/* Faces (shared) */
+.flip__face {
+  width: 100%;
+  aspect-ratio: 4 / 3;          /* change to 1 / 1 for square */
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 220ms ease;
+}
+
+/* FRONT */
+.flip__front {
+  transform: rotateY(0deg);
+}
+
+.flip__front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+/* Subtle hover */
+.flip__inner:hover .flip__front img {
+  transform: scale(1.02);
+  opacity: 0.96;
+}
+
+/* BACK */
+.flip__back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  background: var(--bg);
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Single clean line */
+.flip__line {
+  margin: 0;
+  max-width: 28ch;
+  text-align: center;
+  line-height: 1.35;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* Flipped state */
+.flip.is-flipped .flip__front {
+  transform: rotateY(180deg);
+}
+
+.flip.is-flipped .flip__back {
+  transform: rotateY(360deg);
+}
+
+/* Keyboard accessibility */
+.flip__inner:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--text);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .flip__face {
+    transition: none;
+  }
+
+  .flip__front img {
+    transition: none;
+  }
+}
+
+
+/* =========================
+   ABOUT PAGE TYPOGRAPHY
+========================= */
+
+.about__grid {
+  display: block;
+}
+
+/* Main reading column */
+.about__main {
+  width: 100%;                     /* use full container width */
+  overflow: hidden;                /* contain floated carousel */
+}
+
+
+.about__main p {
+  margin: 0 0 1rem 0;
+  font-size: 1.02rem;           /* slightly nicer for reading */
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.about__main p:last-child {
+  margin-bottom: 0;
+}
+
+/* Style inline links in about content */
+.about__main p a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--muted);
+  transition: opacity 200ms ease;
+}
+
+.about__main p a:hover {
+  opacity: 0.7;
+}
+
+/* Dark mode link color adjustment */
+html[data-theme="bw"] .about__main p a {
+  color: var(--muted);
+}
+
+/* Sidebar cards */
+.about__side {
+  display: grid;
+  gap: 1rem;
+}
+
+.about__card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.1rem 1.1rem;
+}
+
+.about__h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.about__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.9rem;
+}
+
+.about__mini {
+  margin: 0.25rem 0 0 1.1rem;
+  padding: 0;
+}
+
+.about__mini li {
+  margin: 0.35rem 0;
+  color: var(--muted);
+}
+
+
+
+/* =========================
+   ABOUT PHOTO CAROUSEL
+========================= */
+
+.about-gallery {
+  float: right;
+  width: 320px;                 /* controls carousel size */
+  margin: 0.25rem 0 1.5rem 2rem; /* space from text */
+  shape-outside: margin-box;
+}
+
+.carousel {
+  display: block;
+}
+
+.carousel__frame {
+  margin: 0 0 0.5rem 0;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.carousel__frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel__img {
+  width: 100%;
+  aspect-ratio: 4 / 5;          /* vertical portrait orientation */
+  object-fit: cover;
+  display: block;
+  cursor: pointer;              /* click image to advance */
+  transition: opacity 400ms ease-in-out;
+}
+
+.carousel__img:hover {
+  opacity: 0.95;
+}
+
+.carousel__cap {
+  border-top: 1px solid var(--border);
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Minimal controls */
+.carousel__controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.carousel__btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  line-height: 1;
+  font-size: 0.95rem;
+  transition: opacity 150ms ease, border-color 150ms ease;
+}
+
+.carousel__btn:hover {
+  opacity: 0.7;
+  border-color: var(--text);
+}
+
+.carousel__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--text);
+}
+
+/* Mobile: stack carousel above text */
+@media (max-width: 800px) {
+  .about-gallery {
+    float: none;
+    width: 100%;
+    margin: 0 0 1.5rem 0;
+    max-width: 400px;
+  }
+  
+  .carousel__img {
+    aspect-ratio: 16 / 10;      /* wider on mobile */
+  }
+}
+
+
+/* Clear float after main text */
+.about__main::after {
+  content: "";
+  display: block;
+  clear: both;
 }

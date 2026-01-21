@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · Jeremy Ky</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="nav__brand" href="/">Jeremy Ky</a>
+
+      <div class="nav__right">
+        <a href="/pages/about.html">About</a>
+        <a href="/pages/experience.html">Experience</a>
+        <a href="/pages/projects.html">Projects</a>
+        <a href="/pages/blog.html" aria-current="page">Blog</a>
+        <a href="/pages/gallery.html">Gallery</a>
+
+        <button class="theme-toggle" type="button" aria-label="Toggle black/white theme">
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container page">
+    <header class="page__header">
+      <h1 class="page__title">Blog</h1>
+      <p class="page__subtitle">
+        [work in progress]
+      </p>
+    </header>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer">
+      <p class="footer__small">© <span id="year"></span> Jeremy Ky</p>
+      <div class="footer__links">
+        <a href="mailto:juh7hc@virginia.edu">juh7hc@virginia.edu</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // Year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Theme toggle
+  const root = document.documentElement;
+  const btn = document.querySelector(".theme-toggle");
+  const saved = localStorage.getItem("theme");
+  if (saved) root.setAttribute("data-theme", saved);
+
+  btn.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme") || "light";
+    const next = current === "bw" ? "light" : "bw";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+  });
+</script>
+
+</body>
+</html>

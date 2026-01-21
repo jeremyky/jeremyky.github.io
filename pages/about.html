@@ -46,13 +46,22 @@
         <!-- Carousel floats on the right -->
         <section class="about-gallery" aria-label="Photo gallery">
           <div class="carousel" data-carousel>
-            <figure class="carousel__frame">
-              <img class="carousel__img" data-img
-                   src="/assets/img/gallery/mizata-horses.JPG"
-                   alt="Mizata, El Salvador — horseback riding"
-                   loading="lazy" />
-              <figcaption class="carousel__cap" data-cap>Mizata, El Salvador — horseback riding</figcaption>
-            </figure>
+            <div class="carousel__flip flip">
+              <button class="flip__inner" type="button" aria-label="Flip card">
+                <!-- FRONT -->
+                <div class="flip__face flip__front">
+                  <img class="carousel__img" data-img
+                       src="/assets/img/about/image1.jpg"
+                       alt="Gallery image"
+                       loading="lazy" />
+                </div>
+                <!-- BACK (easter egg) -->
+                <div class="flip__face flip__back">
+                  <p class="flip__line">my goofy visa photo i took when studying abroad in korea</p>
+                </div>
+              </button>
+            </div>
+            <div class="carousel__cap" data-cap></div>
             <div class="carousel__controls">
               <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous photo" data-prev>←</button>
               <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next photo" data-next>→</button>
@@ -66,23 +75,22 @@
           <a href="/pages/projects.html">[projects]</a>
         </p>
 
-        <p>
-  
-  In my free time, I’m especially drawn to the theoretical and foundational side of projects. I enjoy learning the
-  math and underlying principles behind systems—things like production engineering, lower-level implementations, and how
-  abstractions are built.
-
-
-        </p>
 
         <p>
           My main interests are in machine learning and scalable software engineering.
           I care about building systems that are not only effective, but also cleanly designed, maintainable, and easy to
-          reason about as they grow.
+          reason about as they grow. I'm drawn to the theoretical and foundational side of projects. I enjoy learning the
+          math and underlying principles behind systems.
         </p>
 
         <p>
-          This site serves as my portfolio where I collect and document projects, experiments, and cool things I’m learning,
+  
+          In my free time, I enjoy learning languages, boxing + bjj, basketball, and gaming.
+        
+                </p>
+
+        <p>
+          This site serves as my portfolio where I collect and document projects, experiments, and cool things I’m learning.
         </p>
       </div>
 
@@ -127,9 +135,10 @@
 
   const carousel = document.querySelector("[data-carousel]");
   if (carousel) {
-    const img = carousel.querySelector("[data-img]");
+    const flipCard = carousel.querySelector(".flip");
+    const flipInner = carousel.querySelector(".flip__inner");
+    const frontImg = carousel.querySelector("[data-img]");
     const cap = carousel.querySelector("[data-cap]");
-    const controls = carousel.querySelector(".carousel__controls");
     const prev = carousel.querySelector("[data-prev]");
     const next = carousel.querySelector("[data-next]");
 
@@ -138,17 +147,37 @@
     const AUTO_ADVANCE_INTERVAL = 4000; // 4 seconds
 
     function render() {
-      img.src = slides[i].src;
-      img.alt = slides[i].cap || "Gallery image";
-      cap.textContent = slides[i].cap;
-      if (slides[i].cap) {
-        cap.style.display = "block";
-      } else {
-        cap.style.display = "none";
+      if (frontImg && slides[i]) {
+        frontImg.src = slides[i].src;
+        frontImg.alt = slides[i].cap || "Gallery image";
+      }
+      if (cap) {
+        cap.textContent = slides[i]?.cap || "";
+        cap.style.display = slides[i]?.cap ? "block" : "none";
+      }
+    }
+
+    function toggleFlip() {
+      if (flipCard) {
+        flipCard.classList.toggle("is-flipped");
+        // Hide caption when flipped
+        if (cap) {
+          if (flipCard.classList.contains("is-flipped")) {
+            cap.style.display = "none";
+          } else {
+            render();
+          }
+        }
       }
     }
 
     function goNext() {
+      // If flipped, unflip first
+      if (flipCard?.classList.contains("is-flipped")) {
+        flipCard.classList.remove("is-flipped");
+        render();
+        return;
+      }
       if (slides.length > 1) {
         i = (i + 1) % slides.length;
         render();
@@ -157,6 +186,12 @@
     }
 
     function goPrev() {
+      // If flipped, unflip first
+      if (flipCard?.classList.contains("is-flipped")) {
+        flipCard.classList.remove("is-flipped");
+        render();
+        return;
+      }
       if (slides.length > 1) {
         i = (i - 1 + slides.length) % slides.length;
         render();
@@ -165,7 +200,7 @@
     }
 
     function startAutoAdvance() {
-      if (slides.length > 1) {
+      if (!flipCard?.classList.contains("is-flipped") && slides.length > 1) {
         autoAdvanceTimer = setInterval(goNext, AUTO_ADVANCE_INTERVAL);
       }
     }
@@ -182,27 +217,30 @@
       startAutoAdvance();
     }
 
-    // Manual controls
-    if (next) next.addEventListener("click", goNext);
-    if (prev) prev.addEventListener("click", goPrev);
-
-    // Click image to go next
-    if (slides.length > 1) {
-      img.addEventListener("click", goNext);
-
-      // Pause on hover
-      carousel.addEventListener("mouseenter", stopAutoAdvance);
-      carousel.addEventListener("mouseleave", startAutoAdvance);
-
-      // Keyboard support
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowRight") goNext();
-        if (e.key === "ArrowLeft") goPrev();
-      });
-
-      // Start auto-advance
-      startAutoAdvance();
+    // Click card to flip
+    if (flipInner) {
+      flipInner.addEventListener("click", toggleFlip);
     }
+
+    // Arrow buttons for navigation
+    if (next) next.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goNext();
+    });
+    if (prev) prev.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goPrev();
+    });
+
+    // Pause on hover
+    carousel.addEventListener("mouseenter", stopAutoAdvance);
+    carousel.addEventListener("mouseleave", startAutoAdvance);
+
+    // Keyboard support
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    });
 
     render();
   }

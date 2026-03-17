@@ -18,7 +18,7 @@
         <a href="/pages/about.html" aria-current="page">About</a>
         <a href="/pages/experience.html">Experience</a>
         <a href="/pages/projects.html">Projects</a>
-        <a href="/pages/blog.html">Blog</a>
+        <a href="/pages/notes/index.html">Notes</a>
         <a href="/pages/gallery.html">Gallery</a>
 
         <button class="theme-toggle" type="button" aria-label="Toggle black/white theme">
@@ -43,31 +43,6 @@
 
       <!-- Main content -->
       <div class="about__main">
-        <!-- Carousel floats on the right -->
-        <section class="about-gallery" aria-label="Photo gallery">
-          <div class="carousel" data-carousel>
-            <div class="carousel__flip flip">
-              <button class="flip__inner" type="button" aria-label="Flip card">
-                <!-- FRONT -->
-                <div class="flip__face flip__front">
-                  <img class="carousel__img" data-img
-                       src="/assets/img/about/image1.jpg"
-                       alt="Gallery image"
-                       loading="lazy" />
-                </div>
-                <!-- BACK (easter egg) -->
-                <div class="flip__face flip__back">
-                  <p class="flip__line">my goofy visa photo i took when studying abroad in korea</p>
-                </div>
-              </button>
-            </div>
-            <div class="carousel__cap" data-cap></div>
-            <div class="carousel__controls">
-              <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous photo" data-prev>←</button>
-              <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next photo" data-next>→</button>
-            </div>
-          </div>
-        </section>
         <p>
           I’m currently studying Computer Science and Statistics at the University of Virginia. I’ve worked on a range of
           applied projects through internships and research, from machine learning pipelines to full-stack systems. 
@@ -85,7 +60,7 @@
 
         <p>
   
-          In my free time, I enjoy learning languages, boxing + bjj, basketball, and gaming.
+          In my free time, I enjoy learning chinese + korean + spanish, muay thai + bjj, basketball, and gaming. My dream is to travel the world and experience different cultures.
         
                 </p>
 
@@ -128,122 +103,7 @@
 
 
 
-  // --- About carousel ---
-  const slides = [
-    { src: "/assets/img/about/image1.jpg", cap: "" },
-  ];
-
-  const carousel = document.querySelector("[data-carousel]");
-  if (carousel) {
-    const flipCard = carousel.querySelector(".flip");
-    const flipInner = carousel.querySelector(".flip__inner");
-    const frontImg = carousel.querySelector("[data-img]");
-    const cap = carousel.querySelector("[data-cap]");
-    const prev = carousel.querySelector("[data-prev]");
-    const next = carousel.querySelector("[data-next]");
-
-    let i = 0;
-    let autoAdvanceTimer = null;
-    const AUTO_ADVANCE_INTERVAL = 4000; // 4 seconds
-
-    function render() {
-      if (frontImg && slides[i]) {
-        frontImg.src = slides[i].src;
-        frontImg.alt = slides[i].cap || "Gallery image";
-      }
-      if (cap) {
-        cap.textContent = slides[i]?.cap || "";
-        cap.style.display = slides[i]?.cap ? "block" : "none";
-      }
-    }
-
-    function toggleFlip() {
-      if (flipCard) {
-        flipCard.classList.toggle("is-flipped");
-        // Hide caption when flipped
-        if (cap) {
-          if (flipCard.classList.contains("is-flipped")) {
-            cap.style.display = "none";
-          } else {
-            render();
-          }
-        }
-      }
-    }
-
-    function goNext() {
-      // If flipped, unflip first
-      if (flipCard?.classList.contains("is-flipped")) {
-        flipCard.classList.remove("is-flipped");
-        render();
-        return;
-      }
-      if (slides.length > 1) {
-        i = (i + 1) % slides.length;
-        render();
-        resetAutoAdvance();
-      }
-    }
-
-    function goPrev() {
-      // If flipped, unflip first
-      if (flipCard?.classList.contains("is-flipped")) {
-        flipCard.classList.remove("is-flipped");
-        render();
-        return;
-      }
-      if (slides.length > 1) {
-        i = (i - 1 + slides.length) % slides.length;
-        render();
-        resetAutoAdvance();
-      }
-    }
-
-    function startAutoAdvance() {
-      if (!flipCard?.classList.contains("is-flipped") && slides.length > 1) {
-        autoAdvanceTimer = setInterval(goNext, AUTO_ADVANCE_INTERVAL);
-      }
-    }
-
-    function stopAutoAdvance() {
-      if (autoAdvanceTimer) {
-        clearInterval(autoAdvanceTimer);
-        autoAdvanceTimer = null;
-      }
-    }
-
-    function resetAutoAdvance() {
-      stopAutoAdvance();
-      startAutoAdvance();
-    }
-
-    // Click card to flip
-    if (flipInner) {
-      flipInner.addEventListener("click", toggleFlip);
-    }
-
-    // Arrow buttons for navigation
-    if (next) next.addEventListener("click", (e) => {
-      e.stopPropagation();
-      goNext();
-    });
-    if (prev) prev.addEventListener("click", (e) => {
-      e.stopPropagation();
-      goPrev();
-    });
-
-    // Pause on hover
-    carousel.addEventListener("mouseenter", stopAutoAdvance);
-    carousel.addEventListener("mouseleave", startAutoAdvance);
-
-    // Keyboard support
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") goNext();
-      if (e.key === "ArrowLeft") goPrev();
-    });
-
-    render();
-  }
+  // (About page carousel removed)
 </script>
 
 </body>

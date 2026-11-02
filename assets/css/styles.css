@@ -162,6 +162,10 @@ html[data-theme="bw"] .toggle-thumb {
   max-width: 55ch;
 }
 
+.hero__subtitle a {
+  color: inherit;
+}
+
 .hero__links {
   display: flex;
   flex-wrap: wrap;

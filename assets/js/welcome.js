@@ -32,7 +32,7 @@
 
   async function play() {
     try {
-      for (const [text, lang] of [['Hello', 'en'], ['Hola', 'es'], ['你好', 'zh-Hant'], ['សួស្តី', 'km']]) {
+      for (const [text, lang] of [['Hello', 'en'], ['Hola', 'es'], ['你好', 'zh-Hant'], ['안녕하세요', 'ko'], ['សួស្តី', 'km']]) {
         if (finished) return;
         greeting.textContent = text;
         greeting.lang = lang;
@@ -48,11 +48,30 @@
       if (finished) return;
       const from = greeting.getBoundingClientRect();
       const to = destination.getBoundingClientRect();
-      const scale = parseFloat(getComputedStyle(destination).fontSize) / parseFloat(getComputedStyle(greeting).fontSize);
+      const startStyle = getComputedStyle(greeting);
+      const endStyle = getComputedStyle(destination);
+      const start = {
+        left: `${from.left}px`, top: `${from.top}px`,
+        fontSize: startStyle.fontSize, lineHeight: startStyle.lineHeight,
+        color: startStyle.color
+      };
+      // Animate the actual type size so the last frame matches the real text,
+      // rather than swapping scaled glyphs for differently rendered ones.
+      Object.assign(greeting.style, {
+        position: 'fixed', left: start.left, top: start.top,
+        width: 'max-content', margin: '0',
+        fontFamily: endStyle.fontFamily,
+        fontWeight: endStyle.fontWeight,
+        letterSpacing: endStyle.letterSpacing
+      });
       root.classList.add('welcome-revealing');
       await animate([
-        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-        { transform: `translate(${to.left - from.left}px, ${to.top - from.top}px) scale(${scale})`, opacity: 1 }
+        { ...start, transform: 'none', opacity: 1 },
+        {
+          left: `${to.left}px`, top: `${to.top}px`,
+          fontSize: endStyle.fontSize, lineHeight: endStyle.lineHeight,
+          color: endStyle.color, transform: 'none', opacity: 1
+        }
       ], { duration: 750, easing: 'cubic-bezier(.22, 1, .36, 1)' });
     } finally {
       finish();

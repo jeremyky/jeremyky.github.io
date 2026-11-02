@@ -3,39 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About · Jeremy Ky</title>
+  <title>About Me · Jeremy Ky</title>
   <link rel="icon" href="../assets/img/favicon.jpeg" type="image/jpeg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/polaroids.js" defer></script>
 </head>
 
 <body>
   <!-- NAV -->
   <header class="site-header">
-    <nav class="nav container">
+    <nav class="nav container" aria-label="Main navigation">
       <a class="nav__brand" href="/">Jeremy Ky</a>
-
       <div class="nav__right">
-        <a href="/pages/about.html" aria-current="page">About</a>
+        <a href="/pages/about.html" aria-current="page">About Me</a>
         <a href="/pages/experience.html">Experience</a>
         <a href="/pages/projects.html">Projects</a>
-        <a href="/pages/notes/index.html">Notes</a>
-        <a href="/pages/gallery.html">Gallery</a>
-
-        <button class="theme-toggle" type="button" aria-label="Toggle black/white theme">
-          <span class="toggle-track">
-            <span class="toggle-thumb"></span>
-          </span>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg class="theme-icon theme-icon--moon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.9 13.1A9 9 0 0 1 10.9 3.1a9 9 0 1 0 10 10Z" />
+          </svg>
+          <svg class="theme-icon theme-icon--sun" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+          </svg>
         </button>
       </div>
     </nav>
   </header>
 
-  
+
   <main class="container page">
   <header class="page__header">
-    <h1 class="page__title">About</h1>
+    <h1 class="page__title">About Me</h1>
     <p class="page__subtitle">
-      I'm an avid learner, interested in becoming a software engineer.    </p>
+      I’m a software engineer, ML researcher, and student.
+    </p>
   </header>
 
   <section class="about">
@@ -43,30 +46,76 @@
 
       <!-- Main content -->
       <div class="about__main">
+        <section class="about__section" aria-labelledby="currently-title">
+          <h2 id="currently-title" class="study-abroad__title">Currently</h2>
+          <p>
+            I’m an incoming software engineer at AWS and pursuing a master’s in Computer Science at
+            <a href="https://www.gatech.edu/" target="_blank" rel="noreferrer">GT</a>.
+          </p>
+          <p>
+            I'm currently focusing on research along with learning Mandarin.
+          </p>
+          <p>
+            I really enjoy playing pool, training MMA, lifting weights, and gaming.
+          </p>
+          <p>
+            I only work out so I can eat more food :D
+          </p>
+        </section>
+
+        <section class="about__section about__section--with-photo" aria-labelledby="undergrad-title">
+            <div class="about__section-copy">
+          <h2 id="undergrad-title" class="study-abroad__title">Undergrad</h2>
         <p>
-          I’m currently studying Computer Science and Statistics at the University of Virginia. I’ve worked on a range of
-          applied projects through internships and research, from machine learning pipelines to full-stack systems. 
-          <a href="/pages/experience.html">[experience]</a>
-          <a href="/pages/projects.html">[projects]</a>
+          During my undergrad, I did research with
+          <a href="https://engineering.virginia.edu/faculty/yen-ling-kuo" target="_blank" rel="noreferrer">Dr. Yen-Ling Kuo</a>,
+          <a href="https://www.cs.virginia.edu/~nn4pj/" target="_blank" rel="noreferrer">Dr. Rich Nguyen</a>, and
+          <a href="https://med.virginia.edu/researchers/David-Acunzo-P0069658" target="_blank" rel="noreferrer">Dr. David Acunzo</a>.
         </p>
 
-
         <p>
-          My main interests are in machine learning and scalable software engineering.
-          I care about building systems that are not only effective, but also cleanly designed, maintainable, and easy to
-          reason about as they grow. I'm drawn to the theoretical and foundational side of projects. I enjoy learning the
-          math and underlying principles behind systems.
+          I was a teaching assistant for
+          <a href="https://markfloryan.github.io/dmt2/readme.html" target="_blank" rel="noreferrer">Theory of Computation</a> and
+          <a href="https://www.cs.virginia.edu/~cr4bd/3130/F2025/" target="_blank" rel="noreferrer">Operating Systems</a>.
         </p>
 
         <p>
-  
-          In my free time, I enjoy learning chinese + korean + spanish, muay thai + bjj, basketball, and gaming. My dream is to travel the world and experience different cultures.
-        
-                </p>
-
-        <p>
-          This site serves as my portfolio where I collect and document projects, experiments, and cool things I’m learning.
+          I also worked full time at UVA’s Law School and volunteered at the hospital.
         </p>
+
+          <p></p>
+            </div>
+            <figure class="polaroid">
+              <img class="polaroid__image" src="/assets/img/about/uva.png" width="2028" height="1444" alt="Friends sharing a meal during my undergraduate years" loading="lazy" decoding="async" />
+              <figcaption class="polaroid__caption">UVA · Undergrad</figcaption>
+            </figure>
+          </section>
+
+          <section class="about__section about__section--with-photo" aria-labelledby="taipei-title">
+            <div class="about__section-copy">
+            <h2 id="taipei-title" class="study-abroad__heading">Taipei <span>Fall 2026</span></h2>
+            <p>
+              I studied abroad in Taiwan in Fall 2026. My main goal was to learn Mandarin, but to also find my own path.
+            </p>
+            </div>
+            <figure class="polaroid">
+              <img class="polaroid__image" src="/assets/img/about/taiwan.png" width="2014" height="1510" alt="Visiting a dog café in Taiwan" loading="lazy" decoding="async" />
+              <figcaption class="polaroid__caption">Taipei · Fall 2026</figcaption>
+            </figure>
+          </section>
+
+          <section class="about__section about__section--with-photo" aria-labelledby="korea-title">
+            <div class="about__section-copy">
+            <h2 id="korea-title" class="study-abroad__heading">Korea <span>Spring 2025</span></h2>
+            <p>
+              I also studied abroad in Korea in Spring 2025. Here, I locked in on learning how to learn. I gained perspective and introspected a bunch.
+            </p>
+            </div>
+            <figure class="polaroid">
+              <img class="polaroid__image" src="/assets/img/about/korea.jpeg" width="5712" height="4284" alt="Celebrating with friends during my time in Korea" loading="lazy" decoding="async" />
+              <figcaption class="polaroid__caption">Korea · Spring 2025</figcaption>
+            </figure>
+          </section>
       </div>
 
     </div>
@@ -89,17 +138,7 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Theme toggle
-  const root = document.documentElement;
-  const btn = document.querySelector(".theme-toggle");
-  const saved = localStorage.getItem("theme");
-  if (saved) root.setAttribute("data-theme", saved);
 
-  btn.addEventListener("click", () => {
-    const current = root.getAttribute("data-theme") || "light";
-    const next = current === "bw" ? "light" : "bw";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  });
 
 
 

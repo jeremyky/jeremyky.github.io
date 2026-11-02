@@ -6,196 +6,181 @@
   <title>Experience · Jeremy Ky</title>
   <link rel="icon" href="../assets/img/favicon.jpeg" type="image/jpeg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script src="/assets/js/theme.js"></script>
 </head>
 
 <body>
   <!-- NAV -->
   <header class="site-header">
-    <nav class="nav container">
+    <nav class="nav container" aria-label="Main navigation">
       <a class="nav__brand" href="/">Jeremy Ky</a>
-
       <div class="nav__right">
-        <a href="/pages/about.html">About</a>
-        <a href="/pages/experience.html">Experience</a>
+        <a href="/pages/about.html">About Me</a>
+        <a href="/pages/experience.html" aria-current="page">Experience</a>
         <a href="/pages/projects.html">Projects</a>
-        <a href="/pages/notes/index.html">Notes</a>
-        <a href="/pages/gallery.html">Gallery</a>
-
-        <button class="theme-toggle" type="button" aria-label="Toggle black/white theme">
-          <span class="toggle-track">
-            <span class="toggle-thumb"></span>
-          </span>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg class="theme-icon theme-icon--moon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.9 13.1A9 9 0 0 1 10.9 3.1a9 9 0 1 0 10 10Z" />
+          </svg>
+          <svg class="theme-icon theme-icon--sun" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+          </svg>
         </button>
       </div>
     </nav>
   </header>
 
-  <main class="container page">
+  <main class="container page experience-page">
     <header class="page__header">
       <h1 class="page__title">Experience</h1>
-      <p class="page__subtitle">
-        Download my 
-      
-
-
-        <a class="btn" href="/assets/resume/Jeremy_Ky_Resume.pdf" target="_blank" rel="noreferrer">
-          resume
-        </a>
-        <a class="btn btn--ghost" href="/assets/resume/Jeremy_Ky_Resume.pdf" download>
-          
-        </a>
-      </p>
+      <p class="page__subtitle">Software engineering, machine learning, and applied research.</p>
+      <div class="experience-links">
+        <a href="/assets/resume/Jeremy_Ky_Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF) <span aria-hidden="true">↗</span></a>
+        <a href="https://scholar.google.com/citations?user=ow8KVxEAAAAJ&amp;hl=en" target="_blank" rel="noreferrer">Publications on Google Scholar <span aria-hidden="true">↗</span></a>
+      </div>
     </header>
+    <section class="experience-section" aria-labelledby="industry-title">
+      <h2 id="industry-title" class="experience-section__title">Industry</h2>
+      <div class="experience-list">
+        <details class="experience-entry">
+          <summary class="experience-entry__header">
+            <span class="experience-entry__identity">
+              <span class="experience-entry__company">Amazon Web Services</span>
+              <span class="experience-entry__role">Incoming Software Engineer</span>
+            </span>
+            <span class="experience-entry__date">Incoming · September 2027</span>
 
-    <section class="section">
-  <h2 class="section__title">Work & Research</h2>
-
-  <div class="timeline">
-
-        <!-- AWS -->
-        <article class="xp">
-          <div class="xp__top">
-            <h3 class="xp__role">Software Development Engineer Intern</h3>
-            <p class="xp__time">Amazon Web Services (AWS) · May 2026 -- Aug 2026</p>
+            <span class="experience-entry__indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="experience-entry__content">
+          <p class="experience-entry__summary">Returning to AWS as a full-time software engineer.</p>
           </div>
-          <p class="xp__desc">
-            ProActive Security Team
-          </p>
-          <ul class="xp__bullets">
-          <div class="tags">
+        </details>
+        <details class="experience-entry">
+          <summary class="experience-entry__header">
+            <span class="experience-entry__identity">
+              <span class="experience-entry__company">Amazon Web Services</span>
+              <span class="experience-entry__role">Software Development Engineer Intern</span>
+            </span>
+            <span class="experience-entry__date">May 2026 – Aug 2026</span>
+
+            <span class="experience-entry__indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="experience-entry__content">
+          <p class="experience-entry__summary">Made MCP servers and AI agents to help with AWS resource security and management.</p>
+          <p class="experience-entry__tech">Java · Python · AWS</p>
           </div>
-        </article>
+        </details>
+        <details class="experience-entry">
+          <summary class="experience-entry__header">
+            <span class="experience-entry__identity">
+              <span class="experience-entry__company">Anote.ai</span>
+              <span class="experience-entry__role">Software Engineering Intern · Breakthrough Tech AI</span>
+            </span>
+            <span class="experience-entry__date">May 2025 – May 2026</span>
 
-    <!-- FloodWatch -->
-    <article class="xp">
-      <div class="xp__top">
-        <h3 class="xp__role">AI/ML Research Intern</h3>
-        <p class="xp__time">FloodWatch (floodwatch.io) · Mar 2025 — Present</p>
-      </div>
-      <p class="xp__desc">
-        Contributing to an NSF-funded flood early warning system for smart cities.
-      </p>
-      <ul class="xp__bullets">
-        <li>Built backend + frontend services (TypeScript, Next.js, tRPC, AWS Lambda) for platform features and data delivery.</li>
-        <li>Developed and deployed deep learning + statistical forecasting models to predict real-time flood severity from weather, satellite, and IoT sensor data.</li>
-        <li>Co-authored an IEEE CAMA 2025 paper on an unsupervised multimodal statistical framework for flood severity.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">TypeScript</span>
-        <span class="tag">Next.js</span>
-        <span class="tag">tRPC</span>
-        <span class="tag">AWS Lambda</span>
-      </div>
-    </article>
+            <span class="experience-entry__indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="experience-entry__content">
+          <p class="experience-entry__summary">Built tools to benchmark AI models and compare their performance.</p>
+          <ul class="experience-entry__bullets">
+            <li>Developed a benchmarking suite and interactive leaderboard for web, question-answering, and image classification tasks.</li>
+            <li>Implemented evaluation metrics and safeguards against metric gaming.</li>
+          </ul>
+          <p class="experience-entry__tech">Flask · MySQL · React · Model evaluation</p>
+          </div>
+        </details>
+        <details class="experience-entry">
+          <summary class="experience-entry__header">
+            <span class="experience-entry__identity">
+              <span class="experience-entry__company">Dewberry Engineers</span>
+              <span class="experience-entry__role">Software Engineering Intern</span>
+            </span>
+            <span class="experience-entry__date">Jun 2024 – Feb 2025</span>
 
-    <!-- Dewberry -->
-    <article class="xp">
-      <div class="xp__top">
-        <h3 class="xp__role">Software Engineering Intern</h3>
-        <p class="xp__time">Dewberry Engineers · Jun 2024 — Feb 2025</p>
+            <span class="experience-entry__indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="experience-entry__content">
+          <p class="experience-entry__summary">Built a secure analytics platform for financial document processing and collaboration.</p>
+          <ul class="experience-entry__bullets">
+            <li>Reduced reporting time by 50% through automated document processing.</li>
+            <li>Integrated Tesseract OCR and GPT-4 for extraction, entity recognition, and anomaly detection.</li>
+          </ul>
+          <p class="experience-entry__tech">React · Flask · PostgreSQL · Docker · Kubernetes</p>
+          </div>
+        </details>
       </div>
-      <p class="xp__desc">
-        Built a secure analytics platform to automate financial document processing and collaboration.
-      </p>
-      <ul class="xp__bullets">
-        <li>Developed a secure analytics web platform with React, Flask, PostgreSQL, Docker, and Kubernetes.</li>
-        <li>Automated financial document processing for multi-user collaboration, reducing reporting time by 50%.</li>
-        <li>Built a document intelligence pipeline integrating OCR (Tesseract) + GPT-4 API for extraction, entity recognition, and anomaly detection.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">React</span>
-        <span class="tag">Flask</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Kubernetes</span>
-      </div>
-    </article>
+    </section>
+    <section class="experience-section" aria-labelledby="research-title">
+      <h2 id="research-title" class="experience-section__title">Research</h2>
+      <div class="experience-list">
+        <details class="experience-entry">
+          <summary class="experience-entry__header">
+            <span class="experience-entry__identity">
+              <span class="experience-entry__company">FloodWatch</span>
+              <span class="experience-entry__role">Research Assistant</span>
+            </span>
+            <span class="experience-entry__date">Mar 2025 – Present</span>
 
-    <!-- Anote.ai -->
-    <article class="xp">
-      <div class="xp__top">
-        <h3 class="xp__role">Software Engineering Intern</h3>
-        <p class="xp__time">Anote.ai (Breakthrough Tech AI) · May 2025 — Present</p>
-      </div>
-      <p class="xp__desc">
-        Built a benchmarking suite and leaderboard to evaluate API-submitted AI models across tasks.
-      </p>
-      <ul class="xp__bullets">
-        <li>Developed and integrated a benchmarking suite (Flask, MySQL, React) to evaluate models across web, Q&A, and image classification tasks.</li>
-        <li>Built an interactive leaderboard to compare performance consistently across models and datasets.</li>
-        <li>Implemented evaluation metrics and integrity safeguards to ensure fair comparisons and prevent metric gaming.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Flask</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">React</span>
-        <span class="tag">Evaluation</span>
-      </div>
-    </article>
+            <span class="experience-entry__indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="experience-entry__content">
+          <p class="experience-entry__summary">Contributed to an NSF-funded flood early warning system for smart cities.</p>
+          <ul class="experience-entry__bullets">
+            <li>Built platform services and forecasting models using weather, satellite, and IoT sensor data.</li>
+            <li>Co-authored an IEEE CAMA 2025 paper on an unsupervised multimodal framework for flood severity.</li>
+          </ul>
+          <p class="experience-entry__tech">TypeScript · Next.js · tRPC · AWS Lambda · Deep learning</p>
+          </div>
+        </details>
+        <details class="experience-entry">
+          <summary class="experience-entry__header">
+            <span class="experience-entry__identity">
+              <span class="experience-entry__company">Toyota Research Institute</span>
+              <span class="experience-entry__role">Research Assistant</span>
+            </span>
+            <span class="experience-entry__date">Jun 2024 – Present</span>
 
-    <!-- Link Lab -->
-    <article class="xp">
-      <div class="xp__top">
-        <h3 class="xp__role">Research Assistant</h3>
-        <p class="xp__time">UVA Link Lab · Jun 2024 — Present</p>
-      </div>
-      <p class="xp__desc">
-        Researching self-driving policy interpretability using reinforcement learning and simulation tooling.
-      </p>
-      <ul class="xp__bullets">
-        <li>Built an RL data collection pipeline to study self-driving policy interpretability; engineered a custom driving rig.</li>
-        <li>Fine-tuned MetaDrive simulators for replay/control of 10,000+ Waymo scenarios.</li>
-        <li>Applied behavioral transformers and adversarial imitation learning residual policies to gather expert-like driving data.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">Reinforcement Learning</span>
-        <span class="tag">MetaDrive</span>
-        <span class="tag">Imitation Learning</span>
-        <span class="tag">Python</span>
-      </div>
-    </article>
+            <span class="experience-entry__indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="experience-entry__content">
+          <p class="experience-entry__summary">Studied self-driving policy interpretability through reinforcement learning and simulation.</p>
+          <ul class="experience-entry__bullets">
+            <li>Built a data collection pipeline and custom driving rig; adapted MetaDrive for 10,000+ Waymo scenarios.</li>
+            <li>Applied behavioral transformers and adversarial imitation learning to collect expert-like driving data.</li>
+          </ul>
+          <p class="experience-entry__tech">Python · MetaDrive · Reinforcement learning · Imitation learning</p>
+          </div>
+        </details>
+        <details class="experience-entry">
+          <summary class="experience-entry__header">
+            <span class="experience-entry__identity">
+              <span class="experience-entry__company">UVA School of Medicine</span>
+              <span class="experience-entry__role">Research Assistant</span>
+            </span>
+            <span class="experience-entry__date">Jan 2024 – Feb 2025</span>
 
-    <!-- UVA School of Medicine -->
-    <article class="xp">
-      <div class="xp__top">
-        <h3 class="xp__role">Research Assistant</h3>
-        <p class="xp__time">UVA School of Medicine · Jan 2024 — Feb 2025</p>
+            <span class="experience-entry__indicator" aria-hidden="true"></span>
+          </summary>
+          <div class="experience-entry__content">
+          <p class="experience-entry__summary">Applied deep learning to large-scale experimental image and text analysis.</p>
+          <ul class="experience-entry__bullets">
+            <li>Developed a pipeline combining CNNs and SBERT to analyze 100,000+ images and text records.</li>
+            <li>Published this work in a psychiatric journal.</li>
+          </ul>
+          <p class="experience-entry__tech">PyTorch · CNNs · SBERT</p>
+          </div>
+        </details>
       </div>
-      <p class="xp__desc">
-        Published deep learning work for large-scale analysis of experimental images + text records.
-      </p>
-      <ul class="xp__bullets">
-        <li>Published a psychiatric journal paper on a deep learning pipeline combining CNNs + SBERT.</li>
-        <li>Enabled automated analysis of 100,000+ experimental images and text records.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag">PyTorch</span>
-        <span class="tag">CNNs</span>
-        <span class="tag">SBERT</span>
-        <span class="tag">Research</span>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-
-    <section class="section">
-      <h2 class="section__title">Skills</h2>
-      <div class="skills">
-        <div class="skills__col">
-          <h3 class="skills__head">Languages</h3>
-          <p class="skills__text">Python, Java, C/C++, JavaScript/TypeScript, SQL</p>
-        </div>
-        <div class="skills__col">
-          <h3 class="skills__head">ML / Data</h3>
-          <p class="skills__text">PyTorch, TensorFlow, NumPy, pandas, sklearn</p>
-        </div>
-        <div class="skills__col">
-          <h3 class="skills__head">Tools</h3>
-          <p class="skills__text">Git, Linux, Docker, FastAPI, Firebase</p>
-        </div>
-      </div>
+    </section>
+    <section class="experience-section" aria-labelledby="skills-title">
+      <h2 id="skills-title" class="experience-section__title">Skills</h2>
+      <dl class="experience-skills">
+        <div><dt>Languages</dt><dd>Python, Java, C/C++, JavaScript/TypeScript, SQL</dd></div>
+        <div><dt>ML &amp; Data</dt><dd>PyTorch, TensorFlow, NumPy, pandas, scikit-learn</dd></div>
+        <div><dt>Tools</dt><dd>Git, Linux, Docker, FastAPI, Firebase</dd></div>
+      </dl>
     </section>
   </main>
 
@@ -214,17 +199,7 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Theme toggle
-  const root = document.documentElement;
-  const btn = document.querySelector(".theme-toggle");
-  const saved = localStorage.getItem("theme");
-  if (saved) root.setAttribute("data-theme", saved);
 
-  btn.addEventListener("click", () => {
-    const current = root.getAttribute("data-theme") || "light";
-    const next = current === "bw" ? "light" : "bw";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  });
 </script>
 
 </body>

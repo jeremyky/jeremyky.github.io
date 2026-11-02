@@ -6,22 +6,25 @@
   <title>Notes · Jeremy Ky</title>
   <link rel="icon" href="../../assets/img/favicon.jpeg" type="image/jpeg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script src="/assets/js/theme.js"></script>
 </head>
 
 <body>
   <header class="site-header">
-    <nav class="nav container">
+    <nav class="nav container" aria-label="Main navigation">
       <a class="nav__brand" href="/">Jeremy Ky</a>
       <div class="nav__right">
-        <a href="/pages/about.html">About</a>
+        <a href="/pages/about.html">About Me</a>
         <a href="/pages/experience.html">Experience</a>
         <a href="/pages/projects.html">Projects</a>
-        <a href="/pages/notes/index.html" aria-current="page">Notes</a>
-        <a href="/pages/gallery.html">Gallery</a>
-        <button class="theme-toggle" type="button" aria-label="Toggle black/white theme">
-          <span class="toggle-track">
-            <span class="toggle-thumb"></span>
-          </span>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg class="theme-icon theme-icon--moon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.9 13.1A9 9 0 0 1 10.9 3.1a9 9 0 1 0 10 10Z" />
+          </svg>
+          <svg class="theme-icon theme-icon--sun" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+          </svg>
         </button>
       </div>
     </nav>
@@ -62,16 +65,7 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-    const root = document.documentElement;
-    const btn = document.querySelector(".theme-toggle");
-    const saved = localStorage.getItem("theme");
-    if (saved) root.setAttribute("data-theme", saved);
-    btn.addEventListener("click", () => {
-      const current = root.getAttribute("data-theme") || "light";
-      const next = current === "bw" ? "light" : "bw";
-      root.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-    });
+
   </script>
 </body>
 </html>

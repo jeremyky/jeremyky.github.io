@@ -6,6 +6,7 @@
   <title>Jeremy Ky</title>
   <link rel="icon" href="assets/img/favicon.jpeg" type="image/jpeg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script src="/assets/js/theme.js"></script>
   <script>
     try {
       const theme = localStorage.getItem('theme');
@@ -24,6 +25,25 @@
     <span class="welcome__greeting" lang="en">Hello</span>
     <span class="welcome__hint">Click anywhere to skip</span>
   </div>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="nav__brand" href="/">Jeremy Ky</a>
+      <div class="nav__right">
+        <a href="/pages/about.html">About Me</a>
+        <a href="/pages/experience.html">Experience</a>
+        <a href="/pages/projects.html">Projects</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg class="theme-icon theme-icon--moon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.9 13.1A9 9 0 0 1 10.9 3.1a9 9 0 1 0 10 10Z" />
+          </svg>
+          <svg class="theme-icon theme-icon--sun" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
   <!-- HERO -->
   <main class="container">
     <section class="hero">
@@ -38,12 +58,12 @@
         </p>
 
         <div class="hero__links">
-          <a href="/assets/resume/Jeremy_Ky_Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
-          <button class="theme-toggle" type="button" aria-label="Toggle black/white theme">
-            <span class="toggle-track">
-              <span class="toggle-thumb"></span>
-            </span>
-          </button>
+          <a href="/assets/resume/Jeremy_Ky_Resume.pdf" target="_blank" rel="noreferrer" aria-label="Resume (PDF)" title="Resume (PDF)" class="icon-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+              <path d="M14 2v6h6M8 13h8M8 17h6" />
+            </svg>
+          </a>
           <a href="https://github.com/jeremyky" target="_blank" rel="noreferrer" aria-label="GitHub" class="icon-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -54,6 +74,12 @@
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
               <rect x="2" y="9" width="4" height="12"></rect>
               <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://scholar.google.com/citations?user=ow8KVxEAAAAJ&amp;hl=en" target="_blank" rel="noreferrer" aria-label="Google Scholar" title="Google Scholar" class="icon-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
             </svg>
           </a>
           <a href="mailto:juh7hc@virginia.edu" aria-label="Email" class="icon-link">
@@ -69,7 +95,7 @@
       <div class="hero__media">
         <img
           class="portrait"
-          src="/assets/img/homepage-photo.png"
+          src="/assets/img/me.png"
           alt="Portrait of Jeremy Ky"
           loading="lazy"
         />
@@ -91,20 +117,7 @@
   // Set year
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  const root = document.documentElement;
-  const btn = document.querySelector(".theme-toggle");
 
-  const saved = localStorage.getItem("theme");
-  if (saved) {
-    root.setAttribute("data-theme", saved);
-  }
-
-  btn.addEventListener("click", () => {
-    const current = root.getAttribute("data-theme") || "light";
-    const next = current === "bw" ? "light" : "bw";
-    root.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  });
 </script>
 
 </body>

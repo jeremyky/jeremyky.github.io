@@ -6,128 +6,98 @@
   <title>Projects | Jeremy Ky</title>
   <link rel="icon" href="../assets/img/favicon.jpeg" type="image/jpeg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script src="/assets/js/theme.js"></script>
 </head>
 
 <body>
   <!-- copy index -->
   <header class="site-header">
-    <nav class="nav container">
+    <nav class="nav container" aria-label="Main navigation">
       <a class="nav__brand" href="/">Jeremy Ky</a>
-
       <div class="nav__right">
-      <div class="nav__right">
-        <a href="/pages/about.html">About</a>
+        <a href="/pages/about.html">About Me</a>
         <a href="/pages/experience.html">Experience</a>
-        <a href="/pages/projects.html">Projects</a>
-        <a href="/pages/notes/index.html">Notes</a>
-        <a href="/pages/gallery.html">Gallery</a>
-
-        <button class="theme-toggle" type="button" aria-label="Toggle black/white theme">
-          <span class="toggle-track">
-            <span class="toggle-thumb"></span>
-          </span>
+        <a href="/pages/projects.html" aria-current="page">Projects</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+          <svg class="theme-icon theme-icon--moon" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.9 13.1A9 9 0 0 1 10.9 3.1a9 9 0 1 0 10 10Z" />
+          </svg>
+          <svg class="theme-icon theme-icon--sun" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+          </svg>
         </button>
       </div>
     </nav>
   </header>
 
-  <main class="container page">
+  <main class="container page projects-page">
     <header class="page__header">
       <h1 class="page__title">Projects</h1>
-      <p class="page__subtitle">
-        Selected work in ML, systems, and applied research. Click a project for details or writeups.
-      </p>
+      <p class="page__subtitle">Things I’ve built, explored, and brought to life.</p>
     </header>
-
-    <section class="projects">
-      <!-- Project card -->
-      <article class="card">
-        <div class="card__top">
-          <h2 class="card__title">Fire Guard</h2>
-          <div class="tags">
-            <span class="tag">ML</span>
-            <span class="tag">Systems</span>
-            <span class="tag">IoT</span>
+    <section class="project-gallery" aria-label="Selected projects">
+      <article class="project-tile">
+        <a class="project-tile__preview" href="https://github.com/jeremyky/FireGuard" target="_blank" rel="noreferrer" aria-label="Explore Fire Guard on GitHub">
+          <img src="/assets/img/projects/fireguard.svg" alt="Concept illustration for Fire Guard" width="800" height="600" loading="lazy" />
+          <span class="project-tile__arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="project-tile__caption">
+          <p class="project-tile__category">ML · Systems · IoT</p>
+          <h2 class="project-tile__title">Fire Guard</h2>
+          <p class="project-tile__description">A connected helmet network that brings sensor data and real-time intelligence to firefighter command centers.</p>
+          <p class="project-tile__tech">React · FastAPI · WebSockets · Python</p>
+          <div class="project-tile__links">
+            <a href="https://github.com/jeremyky/FireGuard" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a href="https://devpost.com/software/fire-guard" target="_blank" rel="noreferrer">Writeup ↗</a>
           </div>
-        </div>
-
-        <p class="card__desc">
-          Proof of Concept Mesh Network for IoT Firefighter Helmets, leveraging LiDAR, Radar, RGB Camera, IMU, and microphone inputs. 
-          Includes a firefighter front-end and command center front-end w/ NLP & CV. <br><br>
-          Built with React, FastAPI, Websockets, Python
-        </p>
-
-        <div class="card__links">
-          <a href="https://github.com/jeremyky/FireGuard" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://devpost.com/software/fire-guard?_gl=1*18xxky0*_gcl_au*MTEzMDkyMDk3OS4xNzY3MTY5MjU2*_ga*MzY4MDIwNjI3LjE3NTg5NDcyNDI.*_ga_0YHJK3Y10M*czE3NjcxNjkyNTYkbzE3JGcxJHQxNzY3MTY5MjY1JGo1MSRsMCRoMA..">Writeup</a>
         </div>
       </article>
-
-      <!-- Duplicate cards and fill them in -->
-      <article class="card">
-        <div class="card__top">
-          <h2 class="card__title">Pantry Pilot</h2>
-          <div class="tags">
-            <span class="tag">Full Stack</span>
+      <article class="project-tile">
+        <a class="project-tile__preview" href="https://github.com/jeremyky/ADAM" target="_blank" rel="noreferrer" aria-label="Explore ADAM on GitHub">
+          <img src="/assets/img/projects/adam.svg" alt="Concept illustration for ADAM" width="800" height="600" loading="lazy" />
+          <span class="project-tile__arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="project-tile__caption">
+          <p class="project-tile__category">Robotics · Computer Vision</p>
+          <h2 class="project-tile__title">ADAM</h2>
+          <p class="project-tile__description">A humanoid first responder that finds survivors, assesses injuries, and streams insights to a live operator dashboard.</p>
+          <p class="project-tile__tech">Python · TypeScript · YOLOv8 · Booster K1</p>
+          <div class="project-tile__links">
+            <a href="https://github.com/jeremyky/ADAM" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a href="https://www.adamrobotics.xyz/" target="_blank" rel="noreferrer">Website ↗</a>
           </div>
-        </div>
-
-        <p class="card__desc">
-        Website to store user's ingredients into a Pantry, come up with recipes given ingredients, make shopping list, and store recipes. <br><br>
-        Built with PHP, JavaScript, HTML, CSS, PostgreSQL
-        </p>
-
-        <div class="card__links">
-          <a href="https://github.com/jeremyky/pantry-pilot" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="#">Writeup</a>
         </div>
       </article>
-
-      <!-- ADAM -->
-      <article class="card">
-        <div class="card__top">
-          <h2 class="card__title">ADAM</h2>
-          <div class="tags">
-            <span class="tag">ML</span>
-            <span class="tag">Robotics</span>
-            <span class="tag">CV</span>
-            <span class="tag">Python</span>
-            <span class="tag">TypeScript</span>
+      <article class="project-tile">
+        <a class="project-tile__preview" href="https://github.com/jeremyky/pantry-pilot" target="_blank" rel="noreferrer" aria-label="Explore Pantry Pilot on GitHub">
+          <img src="/assets/img/projects/pantry-pilot.svg" alt="Concept illustration for Pantry Pilot" width="800" height="600" loading="lazy" />
+          <span class="project-tile__arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="project-tile__caption">
+          <p class="project-tile__category">Full Stack</p>
+          <h2 class="project-tile__title">Pantry Pilot</h2>
+          <p class="project-tile__description">Turn the ingredients you already have into recipes, shopping lists, and your next meal.</p>
+          <p class="project-tile__tech">PHP · JavaScript · PostgreSQL</p>
+          <div class="project-tile__links">
+            <a href="https://github.com/jeremyky/pantry-pilot" target="_blank" rel="noreferrer">GitHub ↗</a>
           </div>
-        </div>
-
-        <p class="card__desc">
-          Humanoid robot first-responder for post-disaster triage (TreeHacks 2026). Locates survivors via audio + vision, runs LLM/VLM injury assessment, and streams to a live command dashboard so responders can act without entering dangerous terrain. Deployed on Booster K1 with YOLO, GPT-4o-mini, and a React operator console.
-          <br><br>
-          Built with Python, TypeScript, Vercel, Booster K1 SDK, YOLOv8
-        </p>
-
-        <div class="card__links">
-          <a href="https://github.com/jeremyky/ADAM" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://www.adamrobotics.xyz/" target="_blank" rel="noreferrer">Site</a>
         </div>
       </article>
-
-      <!-- CineWave -->
-      <article class="card">
-        <div class="card__top">
-          <h2 class="card__title">CineWave</h2>
-          <div class="tags">
-            <span class="tag">Full Stack</span>
-            <span class="tag">ML</span>
-            <span class="tag">Next.js</span>
-            <span class="tag">TypeScript</span>
+      <article class="project-tile">
+        <a class="project-tile__preview" href="https://github.com/jeremyky/CineWave" target="_blank" rel="noreferrer" aria-label="Explore CineWave on GitHub">
+          <img src="/assets/img/projects/cinewave.svg" alt="Concept illustration for CineWave" width="800" height="600" loading="lazy" />
+          <span class="project-tile__arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="project-tile__caption">
+          <p class="project-tile__category">Generative AI · Full Stack</p>
+          <h2 class="project-tile__title">CineWave</h2>
+          <p class="project-tile__description">Turns music, lyrics, and emotional arcs into storyboards and cinematic AI video trailers.</p>
+          <p class="project-tile__award">Hack to the Beat 2026 · Best Use of Vultr &amp; Snowflake</p>
+          <p class="project-tile__tech">Next.js · React · Luma · FFmpeg · Snowflake</p>
+          <div class="project-tile__links">
+            <a href="https://github.com/jeremyky/CineWave" target="_blank" rel="noreferrer">GitHub ↗</a>
           </div>
-        </div>
-
-        <p class="card__desc">
-          Multimodal platform that transforms music into cinematic visual narratives. Analyzes audio structure, emotional arcs, and lyrics to generate emotion-aware storyboards and multi-shot AI video trailers. Hackathon winner — Best Use of Vultr &amp; Best Use of Snowflake (Hack to the Beat 2026 @ UVA).
-          <br><br>
-          Built with Next.js, React, Tailwind, Prisma, Redis, Luma API, FFmpeg, Snowflake, Vultr
-        </p>
-
-        <div class="card__links">
-          <a href="https://github.com/jeremyky/CineWave" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </article>
     </section>
@@ -148,18 +118,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // theme toggle (same behavior as homepage)
-    const root = document.documentElement;
-    const btn = document.querySelector(".theme-toggle");
 
-    const saved = localStorage.getItem("theme");
-    if (saved) root.setAttribute("data-theme", saved);
-
-    btn.addEventListener("click", () => {
-      const current = root.getAttribute("data-theme") || "light";
-      const next = current === "bw" ? "light" : "bw";
-      root.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-    });
   </script>
 </body>
 </html>

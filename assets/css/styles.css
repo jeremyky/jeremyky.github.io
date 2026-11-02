@@ -59,6 +59,71 @@ a:hover {
 }
 
 /* --------- NAV --------- */
+.welcome {
+  display: none;
+}
+
+.welcome-active .welcome {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  cursor: pointer;
+  transition: background 750ms ease;
+}
+
+.welcome__greeting {
+  font-family: var(--font), "Noto Sans Khmer", "Khmer Sangam MN";
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--muted);
+  transform-origin: top left;
+}
+
+.welcome__hint {
+  position: absolute;
+  bottom: 2rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.welcome-active main,
+.welcome-active .site-footer {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.welcome-active .hero__hello {
+  visibility: hidden;
+}
+
+.welcome-revealing .welcome {
+  background: transparent;
+}
+
+.welcome-revealing .welcome__hint {
+  opacity: 0;
+  transition: opacity 150ms;
+}
+
+.welcome-revealing main,
+.welcome-revealing .site-footer {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 750ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-active .welcome { display: none; }
+  .welcome-active main,
+  .welcome-active .site-footer,
+  .welcome-active .hero__hello { visibility: visible; opacity: 1; }
+}
+
 .site-header {
   padding-top: 1.75rem;
 }

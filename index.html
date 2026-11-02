@@ -6,9 +6,24 @@
   <title>Jeremy Ky</title>
   <link rel="icon" href="assets/img/favicon.jpeg" type="image/jpeg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <script>
+    try {
+      const theme = localStorage.getItem('theme');
+      if (theme) document.documentElement.dataset.theme = theme;
+      if (!sessionStorage.getItem('welcome-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('welcome-active');
+        window.welcomeFallback = setTimeout(() => document.documentElement.classList.remove('welcome-active'), 6000);
+      }
+    } catch (_) {}
+  </script>
+  <script src="/assets/js/welcome.js" defer></script>
 </head>
 
 <body>
+  <div class="welcome" aria-hidden="true">
+    <span class="welcome__greeting" lang="en">Hello</span>
+    <span class="welcome__hint">Click anywhere to skip</span>
+  </div>
   <!-- HERO -->
   <main class="container">
     <section class="hero">
